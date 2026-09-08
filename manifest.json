@@ -1,0 +1,151 @@
+{
+  "manifest_version": "0.4",
+  "name": "google-ads-mcp",
+  "display_name": "Google Ads MCP",
+  "version": "1.0.0",
+  "description": "Read-only MCP server for Google Ads: GAQL queries, resource schema and catalog, recommendations, keyword planning and forecasts, change history, multi-account via MCC.",
+  "author": {
+    "name": "Scalably",
+    "email": "hello@scalably.io",
+    "url": "https://scalably.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scalably-io/google-ads-mcp"
+  },
+  "homepage": "https://scalably.io/mcp/google-ads-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "google-ads",
+    "advertising",
+    "ppc",
+    "gaql",
+    "scalably"
+  ],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/scalably_google_ads_mcp/__main__.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "python",
+        "-m",
+        "scalably_google_ads_mcp"
+      ],
+      "env": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "${user_config.developer_token}",
+        "GOOGLE_ADS_CLIENT_ID": "${user_config.client_id}",
+        "GOOGLE_ADS_CLIENT_SECRET": "${user_config.client_secret}",
+        "GOOGLE_ADS_REFRESH_TOKEN": "${user_config.refresh_token}",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "${user_config.login_customer_id}",
+        "GOOGLE_ADS_API_VERSION": "${user_config.api_version}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "google_ads_list_accessible_customers",
+      "description": "List every customer_id the OAuth user has direct access to"
+    },
+    {
+      "name": "google_ads_list_customer_clients",
+      "description": "Walk the MCC hierarchy and return every child account"
+    },
+    {
+      "name": "google_ads_query",
+      "description": "Run a GAQL query against a specific customer account"
+    },
+    {
+      "name": "google_ads_describe_resource",
+      "description": "Schema (fields, metrics, segments) for a GAQL resource"
+    },
+    {
+      "name": "google_ads_list_resources",
+      "description": "Return the full catalog of GAQL resources"
+    },
+    {
+      "name": "google_ads_recommendations",
+      "description": "Read Google's optimization recommendations for a customer account"
+    },
+    {
+      "name": "google_ads_keyword_ideas",
+      "description": "Generate keyword ideas with search volume, competition and CPC estimates"
+    },
+    {
+      "name": "google_ads_keyword_historical_metrics",
+      "description": "Historical monthly search-volume and competition metrics for specific keywords"
+    },
+    {
+      "name": "google_ads_keyword_forecast_metrics",
+      "description": "Forecast KPIs for a proposed keyword plan"
+    },
+    {
+      "name": "google_ads_change_events",
+      "description": "Audit trail of who changed what, last 30 days"
+    },
+    {
+      "name": "google_ads_change_status",
+      "description": "Lightweight last-modified change tracker per resource"
+    }
+  ],
+  "user_config": {
+    "developer_token": {
+      "type": "string",
+      "title": "Developer Token",
+      "description": "Google Ads API developer token, issued in the Ads API Center under your manager account. Basic access is enough for reporting; keyword planning may need it too.",
+      "required": true,
+      "sensitive": true
+    },
+    "client_id": {
+      "type": "string",
+      "title": "OAuth2 Client ID",
+      "description": "Desktop-app OAuth2 client_id from a Google Cloud project with the Google Ads API enabled.",
+      "required": true,
+      "sensitive": false
+    },
+    "client_secret": {
+      "type": "string",
+      "title": "OAuth2 Client Secret",
+      "description": "OAuth2 client_secret paired with the client_id.",
+      "required": true,
+      "sensitive": true
+    },
+    "refresh_token": {
+      "type": "string",
+      "title": "OAuth2 Refresh Token",
+      "description": "Long-lived refresh_token for the adwords scope, generated once by an admin user of the manager account.",
+      "required": true,
+      "sensitive": true
+    },
+    "login_customer_id": {
+      "type": "string",
+      "title": "Login Customer ID (MCC)",
+      "description": "10-digit customer ID of the manager account. Every child account linked under it is queryable.",
+      "required": true,
+      "sensitive": false
+    },
+    "api_version": {
+      "type": "string",
+      "title": "API Version",
+      "description": "Google Ads API version to target, e.g. v25. Optional; the server has its own default.",
+      "required": false,
+      "sensitive": false
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}

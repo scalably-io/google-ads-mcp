@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scalably-google-ads-mcp"
+version = "1.0.0"
+description = "Read-only MCP server for Google Ads: GAQL queries, resource schema and catalog, recommendations, keyword planning and forecasts, change history, multi-account via MCC."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Scalably", email = "hello@scalably.io" }]
+keywords = ["mcp", "model-context-protocol", "google-ads", "advertising", "ppc", "gaql", "scalably"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
+dependencies = [
+    "mcp>=1.6.0,<2",
+    "google-ads==31.2.0",
+    "proto-plus>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+scalably-google-ads-mcp = "scalably_google_ads_mcp.server:main"
+
+[project.urls]
+Homepage = "https://scalably.io/mcp/google-ads-mcp"
+Repository = "https://github.com/scalably-io/google-ads-mcp"
+Issues = "https://github.com/scalably-io/google-ads-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scalably_google_ads_mcp"]

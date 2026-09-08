@@ -1,0 +1,74 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.scalably/google-ads-mcp",
+  "title": "Google Ads MCP",
+  "description": "Google Ads MCP: GAQL queries, resources, recommendations, keyword ideas, change history. 11 tools.",
+  "repository": {
+    "url": "https://github.com/scalably-io/google-ads-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://scalably.io/mcp/google-ads-mcp",
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "scalably-google-ads-mcp",
+      "version": "1.0.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "GOOGLE_ADS_DEVELOPER_TOKEN",
+          "description": "Google Ads API developer token from the Ads API Center",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "GOOGLE_ADS_CLIENT_ID",
+          "description": "OAuth2 client_id for a Desktop-app credential",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "GOOGLE_ADS_CLIENT_SECRET",
+          "description": "OAuth2 client_secret paired with the client_id",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "GOOGLE_ADS_REFRESH_TOKEN",
+          "description": "Long-lived OAuth2 refresh_token for the adwords scope",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "GOOGLE_ADS_LOGIN_CUSTOMER_ID",
+          "description": "10-digit customer ID of the manager account (MCC)",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "GOOGLE_ADS_API_VERSION",
+          "description": "Google Ads API version to target, default set by the server",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "GOOGLE_ADS_LOG_LEVEL",
+          "description": "Log level, default WARNING",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "GOOGLE_ADS_USE_PROTO_PLUS",
+          "description": "Use proto-plus message types, default true",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
