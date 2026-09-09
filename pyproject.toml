@@ -14,7 +14,7 @@ keywords = ["mcp", "model-context-protocol", "google-ads", "advertising", "ppc",
 classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
 dependencies = [
     "mcp>=1.6.0,<2",
-    "google-ads==31.2.0",
+    "google-ads==31.4.0",
     "proto-plus>=1.24.0",
 ]
 
