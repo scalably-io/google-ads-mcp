@@ -63,9 +63,10 @@ def _reply(status: str, operation: str, summary: str, *, result=None, target=Non
     return json.dumps({"status": status, "operation": operation, "summary": summary, "target": target, "result": result, "proof": proof, "warnings": warnings or [], "recovery": recovery}, indent=2)
 
 
-def _fail(operation: str, message: str, retryable: bool=False) -> None:
+def _fail(operation: str, message: str, retryable: bool = False) -> None:
+    """Plain error: <code>: <message> <hint>. The operation name is already in the tool error the client shows."""
     hint = "Retry once after a delay." if retryable else "Correct credentials, permissions, identifiers, or parameters before retrying."
-    raise RuntimeError(f"{operation}: {message} {hint}")
+    raise RuntimeError(f"google_ads_request_failed: {message} {hint}")
 
 
 _raw_tool=mcp.tool

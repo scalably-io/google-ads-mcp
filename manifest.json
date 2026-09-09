@@ -2,7 +2,7 @@
   "manifest_version": "0.4",
   "name": "google-ads-mcp",
   "display_name": "Google Ads MCP",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read-only MCP server for Google Ads: GAQL queries, resource schema and catalog, recommendations, keyword planning and forecasts, change history, multi-account via MCC.",
   "author": {
     "name": "Scalably",

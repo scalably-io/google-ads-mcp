@@ -72,7 +72,7 @@ This is the heaviest setup in the gallery: expect up to two days waiting on deve
 
 ## Reply shape
 
-Every tool returns JSON with `status` (`succeeded`, `partial`, `no_op`), `summary`, `result`, `proof`, `warnings`, `recovery`. `proof.apiVersion` names the Google Ads API version used. `proof.microsConverted` is set on `google_ads_query`. A `partial` status means the result hit its configured bound (`max_rows`, `page_size` or `limit`); `recovery.nextAction` says how to continue.
+Every tool returns JSON with `status` (`succeeded`, `partial`, `no_op`), `operation`, `summary`, `target`, `result`, `proof`, `warnings`, `recovery`. Failures surface as a tool error whose text is `google_ads_request_failed: <message> <hint>`. `proof.apiVersion` names the Google Ads API version used. `proof.microsConverted` is set on `google_ads_query`. A `partial` status means the result hit its configured bound (`max_rows`, `page_size` or `limit`); `recovery.nextAction` says how to continue.
 
 ## Limits
 

@@ -67,7 +67,7 @@ def test_redact_hides_developer_token_client_secret_refresh_token_and_bearer():
 
 
 def test_fail_is_plain_runtime_error():
-    with pytest.raises(RuntimeError, match=r"^google_ads_query: boom "):
+    with pytest.raises(RuntimeError, match=r"^google_ads_request_failed: boom "):
         server._fail("google_ads_query", "boom")
 
 
